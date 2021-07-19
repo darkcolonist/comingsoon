@@ -3,43 +3,11 @@
 
     $.fn.extend({ 
 
-      countdown100: function(options) {
-        var defaults = {
-          timeZone: "",
-          endtimeYear: 0,
-          endtimeMonth: 0,
-          endtimeDate: 0,
-          endtimeHours: 0,
-          endtimeMinutes: 0,
-          endtimeSeconds: 0,
-        }
-
-        var options =  $.extend(defaults, options);
+      countdown100: function(deadlineDateStr) {
+        var deadline = moment(deadlineDateStr);
 
         return this.each(function() {
           var obj = $(this);
-          var timeNow = new Date();
-
-          var tZ = options.timeZone; console.log(tZ);
-          var endYear = options.endtimeYear;
-          var endMonth = options.endtimeMonth;
-          var endDate = options.endtimeDate;
-          var endHours = options.endtimeHours;
-          var endMinutes = options.endtimeMinutes;
-          var endSeconds = options.endtimeSeconds;
-
-          if(tZ == "") {
-            var deadline = new Date(endYear, endMonth - 1, endDate, endHours, endMinutes, endSeconds);
-          } 
-          else {
-            var deadline = moment.tz([endYear, endMonth - 1, endDate, endHours, endMinutes, endSeconds], tZ).format();
-          }
-
-          if(Date.parse(deadline) < Date.parse(timeNow)) {
-            var deadline = new Date(Date.parse(new Date()) + endDate * 24 * 60 * 60 * 1000 + endHours * 60 * 60 * 1000); 
-          }
-          
-          
           initializeClock(deadline);
 
           function getTimeRemaining(endtime) { 
@@ -48,13 +16,16 @@
             var minutes = Math.floor((t / 1000 / 60) % 60);
             var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
             var days = Math.floor(t / (1000 * 60 * 60 * 24));
-            return {
+
+            var retval = {
               'total': t,
               'days': days,
               'hours': hours,
               'minutes': minutes,
               'seconds': seconds
             };
+
+            return retval;
           }
 
           function initializeClock(endtime) { 

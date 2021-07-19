@@ -72,7 +72,7 @@
 					<span class="focus-input100"></span>
 				</div>
 
-				<button class="flex-c-m s1-txt1 size2 how-btn trans-04 where1">
+				<button class="flex-c-m s1-txt1 size2 how-btn trans-04 where1" disabled="disabled">
 					Notify Me
 				</button>
 			</form>			
@@ -96,19 +96,13 @@
 	<script src="vendor/countdowntime/moment-timezone-with-data.min.js"></script>
 	<script src="vendor/countdowntime/countdowntime.js"></script>
 	<script>
-		$('.cd100').countdown100({
-			/*Set Endtime here*/
-			/*Endtime must be > current time*/
-			endtimeYear: 0,
-			endtimeMonth: 0,
-			endtimeDate: 35,
-			endtimeHours: 18,
-			endtimeMinutes: 0,
-			endtimeSeconds: 0,
-			timeZone: "" 
-			// ex:  timeZone: "America/New_York"
-			//go to " http://momentjs.com/timezone/ " to get timezone
-		});
+		/**
+		 * change only this based on your needs
+		 * @type {String}
+		 */
+		var deadline = "2024-12-12";
+
+		$('.cd100').countdown100(deadline);
 	</script>
 <!--===============================================================================================-->
 	<script src="vendor/tilt/tilt.jquery.min.js"></script>
