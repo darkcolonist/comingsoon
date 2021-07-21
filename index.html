@@ -97,12 +97,14 @@
 	<script src="vendor/countdowntime/countdowntime.js"></script>
 	<script>
 		/**
-		 * change only this based on your needs
+		 * change only this based on your needs, set to null will add 10
+		 * years from today (unlimited)
 		 * @type {String}
 		 */
-		var deadline = "2050-12-12";
+		var deadline = null;
 
-		$('#frmNotify').hide();
+		// $('#frmNotify').fadeOut(5000); // lmao just like a troll
+		$('#frmNotify').hide(); // drop the shenanigans
 
 		$('.cd100').countdown100(deadline);
 	</script>

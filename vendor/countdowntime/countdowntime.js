@@ -4,7 +4,12 @@
     $.fn.extend({ 
 
       countdown100: function(deadlineDateStr) {
+
+        if(deadlineDateStr == null)
+          deadlineDateStr = moment().add(10,"Y").format("YYYY-01-05 00:00:00");
+
         var deadline = moment(deadlineDateStr);
+        console.debug("site will be available on", deadline.format("YYYY-MM-DD HH:mm:ss"))
 
         return this.each(function() {
           var obj = $(this);
